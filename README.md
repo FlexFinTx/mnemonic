@@ -12,7 +12,7 @@
 ## Example Usage
 
 ```typescript
-import Mnemonic from 'mnemonic';
+import Mnemonic from 'flexid-mnemonic';
 
 const seed = new Uint8Array(crypto.randomBytes(32).buffer);
 const mn = Mnemonic.mnemonicFromSeed(seed);
