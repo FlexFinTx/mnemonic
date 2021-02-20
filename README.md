@@ -1,6 +1,7 @@
 # Mnemonic
 
 ![CI](https://github.com/FlexFinTx/mnemonic/workflows/CI/badge.svg)
+![CD](https://github.com/FlexFinTx/mnemonic/workflows/CD/badge.svg)
 
 <p align="center">
   <img src="./flexfintx-green-logo.png"/>
