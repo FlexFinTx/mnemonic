@@ -8,6 +8,17 @@
 
 `Mnemonic` is a library to convert 32 byte UInt8Arrays (commonly used by assymetric public key cryptography algorithms) to English menmonic phrases, and vice versa. Intended to be used to convert secret keys to mnemonic phrases and vice versa.
 
+## Example Usage
+
+```typescript
+import Mnemonic from 'mnemonic';
+
+const seed = new Uint8Array(crypto.randomBytes(32).buffer);
+const mn = Mnemonic.mnemonicFromSeed(seed);
+const target = Mnemonic.seedFromMnemonic(mn);
+// Target and Seed will be strictly equal
+```
+
 ## Development
 
 `yarn start`
