@@ -1,5 +1,6 @@
 import english from './wordlists/english';
-import crypto from 'crypto';
+import sha256 from 'crypto-js/sha256';
+import base64 from 'crypto-js/enc-base64';
 
 const ERROR_FAILED_TO_DECODE_MNEMONIC = Error('Failed to decode mnemonic');
 const ERROR_WORD_NOT_IN_WORDSLIST = Error(
@@ -65,11 +66,11 @@ function applyWords(nums: number[]): string[] {
 }
 
 function computeChecksum(seed: Uint8Array): string {
-  const hashBuffer = crypto
-    .createHash('sha256')
-    .update(seed)
-    .digest();
-  const uint8HashBuffer = new Uint8Array(hashBuffer);
+  let b64Seed = Buffer.from(seed).toString('base64');
+  const hashBuffer = sha256(base64.parse(b64Seed));
+  const uint8HashBuffer = new Uint8Array(
+    Buffer.from(hashBuffer.toString(base64), 'base64')
+  );
   const uint11HashBuffer = UInt8ArrayToUInt11Array(uint8HashBuffer);
   const words = applyWords(uint11HashBuffer);
 
